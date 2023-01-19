@@ -1,42 +1,31 @@
 <template>
   <div class="global-container">
     <aside class="left-menu-bar">
-      <el-menu default-active="2" class="global-menu" :collapse="isCollapse" @open="handleOpen" @close="handleClose">
+      <el-menu default-active="1-1" class="global-menu" :collapse="isCollapse" @change="hanleChange">
         <h1 class="left-menu-logo">LOGO</h1>
-        <el-sub-menu index="1">
-          <template #title>
-            <el-icon><location /></el-icon>
-            <span>Navigator One</span>
-          </template>
-          <el-menu-item-group>
-            <template #title><span>Group One</span></template>
-            <el-menu-item index="1-1">item one</el-menu-item>
-            <el-menu-item index="1-2">item two</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="Group Two">
-            <el-menu-item index="1-3">item three</el-menu-item>
-          </el-menu-item-group>
-          <el-sub-menu index="1-4">
-            <template #title><span>item four</span></template>
-            <el-menu-item index="1-4-1">item one</el-menu-item>
-          </el-sub-menu>
-        </el-sub-menu>
-        <el-menu-item index="2">
+        <el-menu-item index="/dashboard">
           <el-icon><icon-menu /></el-icon>
-          <template #title>Navigator Two</template>
+          <template #title>数据看板</template>
         </el-menu-item>
-        <el-menu-item index="3" disabled>
+        <el-menu-item index="/table">
           <el-icon><document /></el-icon>
-          <template #title>Navigator Three</template>
+          <template #title>表格</template>
         </el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item index="/editor">
+          <el-icon><document /></el-icon>
+          <template #title>富文本编辑器</template>
+        </el-menu-item>
+        <el-menu-item index="/icons">
           <el-icon><setting /></el-icon>
-          <template #title>Navigator Four</template>
+          <template #title>图标</template>
         </el-menu-item>
       </el-menu>
     </aside>
-    <div class="global-content">
-      <header class="global-content">2</header>
+    <div class="global-right-size">
+      <header class="global-page-header">2</header>
+      <div class="global-content-wrapper">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -46,10 +35,7 @@ import { ref } from 'vue'
 import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
 
 const isCollapse = ref(false)
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
+const hanleChange = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
 </script>
@@ -63,19 +49,28 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 .left-menu-bar {
   flex-direction: column;
+  width: 250px;
   .left-menu-logo {
     text-align: center;
     line-height: 50px;
+    font-weight: bold;
   }
   .global-menu {
     height: 100%;
+    border-right: none;
   }
 }
-.global-header {
+.global-page-header {
   height: 50px;
-  background: #666;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
 }
-.global-content {
+.global-right-size {
   flex: 1;
+}
+.global-content-wrapper {
+  padding: 20px;
 }
 </style>

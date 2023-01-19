@@ -1,27 +1,57 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouterOptions } from 'vue-router'
 import login from '@/views/login/login.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/pages',
-      name: 'pages',
-      component: () => import('@/views/pages/pages.vue'),
-      children: [
+// 设计成后端路由
+export const pagesChildRouter = [
+  {
+    path: '/pages/dashboard',
+    name: 'dashboard',
+    component: () => import('@/views/pages/dashboard/dashboard.vue'),
+  },
+  {
+    path: '/pages/dashboard',
+    name: 'dashboard',
+    component: () => import('@/views/pages/dashboard/dashboard.vue'),
+  },
+]
+
+function fetchRouterOptions(): Promise<RouterOptions> {
+  return new Promise(resolve => {
+    const routerOptions = {
+      history: createWebHistory(import.meta.env.BASE_URL),
+      // 这里设计成后端路由
+      routes: [
         {
-          path: '/dashboard',
-          name: 'dashboard',
-          component: () => import('@/views/pages/dashboard/dashboard.vue'),
+          path: '/pages',
+          name: 'pages',
+          redirect: '/pages/dashboard',
+          icon: '',
+          component: () => import('@/views/pages/pages.vue'),
+          children: pagesChildRouter,
+        },
+        {
+          path: '/login',
+          name: 'login',
+          component: login,
+        },
+        {
+          path: '/:w+',
+          redirect: '/pages/dashbaord',
         },
       ],
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: login,
-    },
-  ],
-})
+    }
+    setTimeout(() => {
+      resolve(routerOptions)
+    }, 1000)
+  })
+}
 
-export default router
+/**
+ * 从后端拉取路由数据
+ */
+async function getRouter() {
+  const routerOptions = await fetchRouterOptions()
+  return createRouter(routerOptions)
+}
+
+export default getRouter

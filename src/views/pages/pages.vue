@@ -1,8 +1,8 @@
 <template>
-  <div class="global-container">
-    <aside class="left-menu-bar">
-      <el-menu default-active="1-1" class="global-menu" :collapse="isCollapse" @change="hanleChange">
-        <h1 class="left-menu-logo">LOGO</h1>
+  <el-container class="h-full">
+    <el-aside>
+      <el-menu default-active="1-1" class="h-full border-r-0" :collapse="isCollapse" @change="hanleChange">
+        <h1 class="text-center left-menu-logo">LOGO</h1>
         <el-menu-item index="/dashboard">
           <el-icon><icon-menu /></el-icon>
           <template #title>数据看板</template>
@@ -20,19 +20,50 @@
           <template #title>图标</template>
         </el-menu-item>
       </el-menu>
-    </aside>
-    <div class="global-right-size">
-      <header class="global-page-header">2</header>
-      <div class="global-content-wrapper">
+    </el-aside>
+    <el-container>
+      <el-header class="flex items-center">
+        <el-tooltip placement="bottom">
+          <template #content> 收起菜单 </template>
+          <el-icon class="cursor-pointer mr-auto" size="20"><Expand /></el-icon>
+        </el-tooltip>
+        <el-tooltip placement="bottom">
+          <template #content> {{ isFullscreen ? '退出全屏' : '全屏' }} </template>
+          <el-icon class="cursor-pointer mr-2" size="20" @click="toggle"><FullScreen /></el-icon>
+        </el-tooltip>
+
+        <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            <div class="flex items-center">
+              <el-avatar class="mr-1" :size="30" />
+              网友
+              <el-icon><ArrowDown /></el-icon>
+            </div>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>Action 1</el-dropdown-item>
+              <el-dropdown-item>Action 2</el-dropdown-item>
+              <el-dropdown-item>Action 3</el-dropdown-item>
+              <el-dropdown-item disabled>Action 4</el-dropdown-item>
+              <el-dropdown-item divided>Action 5</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </el-header>
+      <el-main>
         <router-view></router-view>
-      </div>
-    </div>
-  </div>
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
+import { Document, Menu as IconMenu, Expand, Setting, FullScreen, ArrowDown } from '@element-plus/icons-vue'
+import { useFullscreen } from '@vueuse/core'
+
+const { isFullscreen, toggle } = useFullscreen()
 
 const isCollapse = ref(false)
 const hanleChange = (key: string, keyPath: string[]) => {
@@ -41,36 +72,7 @@ const hanleChange = (key: string, keyPath: string[]) => {
 </script>
 
 <style lang="scss" scoped>
-.global-container {
-  height: 100%;
-  width: 100%;
-  background: #eee;
-  display: flex;
-}
-.left-menu-bar {
-  flex-direction: column;
-  width: 250px;
-  .left-menu-logo {
-    text-align: center;
-    line-height: 50px;
-    font-weight: bold;
-  }
-  .global-menu {
-    height: 100%;
-    border-right: none;
-  }
-}
-.global-page-header {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-}
-.global-right-size {
-  flex: 1;
-}
-.global-content-wrapper {
-  padding: 20px;
+.left-menu-logo {
+  line-height: 60px;
 }
 </style>

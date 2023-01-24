@@ -4,6 +4,7 @@ import App from '@/App.vue'
 import getRouter from '@/router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import '@/style/tailwind.scss'
 import '@/style/global.scss'
 
 const app = createApp(App)

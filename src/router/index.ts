@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, type RouterOptions } from 'vue-router'
-import login from '@/views/login/login.vue'
+import Login from '@/views/login/login.vue'
 
 // 设计成后端路由
 export const pagesChildRouter = [
@@ -22,6 +22,10 @@ function fetchRouterOptions(): Promise<RouterOptions> {
       // 这里设计成后端路由
       routes: [
         {
+          path: '/',
+          redirect: '/pages ',
+        },
+        {
           path: '/pages',
           name: 'pages',
           redirect: '/pages/dashboard',
@@ -32,11 +36,11 @@ function fetchRouterOptions(): Promise<RouterOptions> {
         {
           path: '/login',
           name: 'login',
-          component: login,
+          component: Login,
         },
         {
-          path: '/:w+',
-          redirect: '/pages/dashbaord',
+          path: '/:pathMatch(.*)*',
+          component: () => import('@/views/not-found/not-found.vue'),
         },
       ],
     }

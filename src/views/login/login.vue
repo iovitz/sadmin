@@ -15,7 +15,7 @@
           <el-input class="w-96" type="password" size="large" placeholder="Please input password" v-model="formData.password" clearable />
         </el-form-item>
         <el-button class="w-full" type="primary" @click="handleLogin">Login</el-button>
-        <div class="text-center mt-4">
+        <div class="text-center my-4">
           <el-button type="primary" text @click="handleTestLogin">点击使用测试账号登录</el-button>
         </div>
 

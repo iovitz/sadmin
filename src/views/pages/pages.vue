@@ -32,7 +32,7 @@
           <el-icon class="cursor-pointer mr-2" size="20" @click="toggle"><FullScreen /></el-icon>
         </el-tooltip>
 
-        <el-dropdown trigger="click">
+        <el-dropdown trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
             <div class="flex items-center">
               <el-avatar class="mr-1" :size="30" />
@@ -42,11 +42,7 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>Action 1</el-dropdown-item>
-              <el-dropdown-item>Action 2</el-dropdown-item>
-              <el-dropdown-item>Action 3</el-dropdown-item>
-              <el-dropdown-item disabled>Action 4</el-dropdown-item>
-              <el-dropdown-item divided>Action 5</el-dropdown-item>
+              <el-dropdown-item command="exit">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -62,12 +58,23 @@
 import { ref } from 'vue'
 import { Document, Menu as IconMenu, Expand, Setting, FullScreen, ArrowDown } from '@element-plus/icons-vue'
 import { useFullscreen } from '@vueuse/core'
+import { LocalST } from '@/utils/storage'
+import { StorageKey } from '@/const/storage_key'
+import { useRouter } from 'vue-router'
 
 const { isFullscreen, toggle } = useFullscreen()
+const router = useRouter()
 
 const isCollapse = ref(false)
 const hanleChange = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
+}
+
+const handleCommand = (command: string) => {
+  if (command === 'exit') {
+    LocalST.remove(StorageKey.token)
+    router.replace('/login')
+  }
 }
 </script>
 

@@ -70,6 +70,12 @@ async function getRouter() {
         next('/pages')
       }
     }
+    if (to.path.startsWith('/pages') && !from.path.startsWith('/pages')) {
+      const token = LocalST.get(StorageKey.token)
+      if (!token) {
+        next('/login')
+      }
+    }
     next()
   })
   return router

@@ -29,7 +29,7 @@ export class Storage {
    * 移除指定的key
    * @param {string} key 需要移除的key
    */
-  public remove(key: string) {
+  public remove(key: StorageKey) {
     localStorage.removeItem(key)
   }
 

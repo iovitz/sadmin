@@ -10,16 +10,17 @@ export const pagesChildRouter = [
     path: '/pages/dashboard',
     name: 'dashboard',
     component: () => import('@/views/pages/dashboard/dashboard.vue'),
-  },
-  {
-    path: '/pages/dashboard',
-    name: 'dashboard',
-    component: () => import('@/views/pages/dashboard/dashboard.vue'),
+    meta: {
+      title: '看板',
+    },
   },
   {
     path: '/pages/not-found',
     name: 'not-found',
     component: () => import('@/views/not-found/not-found.vue'),
+    meta: {
+      title: '页面未找到',
+    },
   },
   {
     path: '/pages/:pathMatch(.*)*',
@@ -44,6 +45,9 @@ function fetchRouterOptions(): Promise<RouterOptions> {
           path: '/login',
           name: 'login',
           component: Login,
+          meta: {
+            title: '登录页',
+          },
         },
         {
           path: '/:pathMatch(.*)*',
@@ -85,6 +89,12 @@ async function getRouter() {
 
   router.afterEach((to, from, next) => {
     doneProgress()
+    const toMeta = to.meta
+    let pageTitle = 'SADMIN'
+    if (toMeta.title) {
+      pageTitle = toMeta.title + ' - ' + pageTitle
+    }
+    document.title = pageTitle
   })
   return router
 }

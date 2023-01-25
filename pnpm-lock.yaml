@@ -7,6 +7,7 @@ specifiers:
   '@rushstack/eslint-patch': ^1.1.4
   '@types/jsdom': ^20.0.1
   '@types/node': ^18.11.12
+  '@types/nprogress': ^0.2.0
   '@vitejs/plugin-vue': ^4.0.0
   '@vitejs/plugin-vue-jsx': ^3.0.0
   '@vue/eslint-config-prettier': ^7.0.0
@@ -25,6 +26,7 @@ specifiers:
   json-server: ^0.17.1
   lint-staged: ^13.1.0
   npm-run-all: ^4.1.5
+  nprogress: ^0.2.0
   pinia: ^2.0.28
   postcss: ^8.4.21
   prettier: ^2.7.1
@@ -44,6 +46,7 @@ dependencies:
   '@vueuse/core': 9.11.1_vue@3.2.45
   axios: 1.2.4
   element-plus: 2.2.28_vue@3.2.45
+  nprogress: 0.2.0
   pinia: 2.0.28_typescript@4.7.4+vue@3.2.45
   vue: 3.2.45
   vue-router: 4.1.6_vue@3.2.45
@@ -54,6 +57,7 @@ devDependencies:
   '@rushstack/eslint-patch': 1.2.0
   '@types/jsdom': 20.0.1
   '@types/node': 18.11.18
+  '@types/nprogress': 0.2.0
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
   '@vitejs/plugin-vue-jsx': 3.0.0_vite@4.0.4+vue@3.2.45
   '@vue/eslint-config-prettier': 7.0.0_eslint@8.32.0+prettier@2.8.3
@@ -972,6 +976,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/semver/7.3.13:
@@ -3902,6 +3910,10 @@ packages:
     dependencies:
       path-key: 4.0.0
     dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
 
   /nth-check/2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}

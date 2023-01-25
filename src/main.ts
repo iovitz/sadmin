@@ -3,9 +3,10 @@ import { createPinia } from 'pinia'
 import App from '@/App.vue'
 import getRouter from '@/router'
 import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
 import '@/style/tailwind.scss'
+import 'element-plus/dist/index.css'
 import '@/style/global.scss'
+import 'nprogress/nprogress.css'
 
 const app = createApp(App)
 

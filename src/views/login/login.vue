@@ -26,9 +26,8 @@
 </template>
 
 <script setup lang="ts">
-import { StorageKey } from '@/const/storage_key'
 import { useUserStore } from '@/stores/user.store'
-import { LocalST } from '@/utils/storage'
+import { showProgress } from '@/utils/nprogress/nprogress'
 import { reactive } from 'vue'
 
 const userStore = useUserStore()

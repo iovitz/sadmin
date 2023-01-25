@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, type RouterOptions } from 'vue-router'
 import Login from '@/views/login/login.vue'
+import { LocalST } from '@/utils/storage'
+import { StorageKey } from '@/const/storage_key'
 
 // 设计成后端路由
 export const pagesChildRouter = [
@@ -59,7 +61,18 @@ function fetchRouterOptions(): Promise<RouterOptions> {
  */
 async function getRouter() {
   const routerOptions = await fetchRouterOptions()
-  return createRouter(routerOptions)
+  const router = createRouter(routerOptions)
+  router.beforeEach((to, from, next) => {
+    // 已经登录成功直接跳转到dashboard
+    if (to.path === '/login') {
+      const token = LocalST.get(StorageKey.token)
+      if (token) {
+        next('/pages')
+      }
+    }
+    next()
+  })
+  return router
 }
 
 export default getRouter

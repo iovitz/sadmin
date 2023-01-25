@@ -19,7 +19,6 @@ export const useUserStore = defineStore('user', () => {
       userInfo.nickname = user.nickname
       LocalST.set(StorageKey.token, user.token)
       router.replace('/pages')
-      console.log('跳转')
     }
   }
 

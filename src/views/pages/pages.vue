@@ -1,7 +1,7 @@
 <template>
   <el-container class="h-full">
-    <el-aside>
-      <el-menu default-active="1-1" class="h-full border-r-0" :collapse="isCollapse" @change="hanleChange">
+    <el-aside class="aside">
+      <el-menu default-active="1-1" class="side-menu h-full border-r-0" :collapse="isCollapse" @change="hanleChange">
         <h1 class="text-center left-menu-logo">LOGO</h1>
         <el-menu-item index="/dashboard">
           <el-icon><icon-menu /></el-icon>
@@ -25,7 +25,7 @@
       <el-header class="flex items-center">
         <el-tooltip placement="bottom">
           <template #content> 收起菜单 </template>
-          <el-icon class="cursor-pointer mr-auto" size="20"><Expand /></el-icon>
+          <el-icon @click="handleToggleCollapse" class="cursor-pointer mr-auto" size="20"><Expand /></el-icon>
         </el-tooltip>
         <el-tooltip placement="bottom">
           <template #content> {{ isFullscreen ? '退出全屏' : '全屏' }} </template>
@@ -47,7 +47,7 @@
           </template>
         </el-dropdown>
       </el-header>
-      <el-main>
+      <el-main class="bg-slate-200">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -66,6 +66,10 @@ const { isFullscreen, toggle } = useFullscreen()
 const router = useRouter()
 
 const isCollapse = ref(false)
+const handleToggleCollapse = () => {
+  isCollapse.value = !isCollapse.value
+}
+
 const hanleChange = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
@@ -81,5 +85,15 @@ const handleCommand = (command: string) => {
 <style lang="scss" scoped>
 .left-menu-logo {
   line-height: 60px;
+  @apply text-white;
+}
+.aside {
+  --el-aside-width: min-content;
+  --el-menu-bg-color: #0f172a;
+  --el-menu-text-color: #fff;
+  --el-menu-hover-bg-color: #1e293b;
+}
+.side-menu {
+  border-right: none;
 }
 </style>

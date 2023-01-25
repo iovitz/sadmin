@@ -13,6 +13,15 @@ export const pagesChildRouter = [
     name: 'dashboard',
     component: () => import('@/views/pages/dashboard/dashboard.vue'),
   },
+  {
+    path: '/pages/not-found',
+    name: 'not-found',
+    component: () => import('@/views/not-found/not-found.vue'),
+  },
+  {
+    path: '/pages/:pathMatch(.*)*',
+    redirect: '/pages/not-found',
+  },
 ]
 
 function fetchRouterOptions(): Promise<RouterOptions> {
@@ -22,14 +31,9 @@ function fetchRouterOptions(): Promise<RouterOptions> {
       // 这里设计成后端路由
       routes: [
         {
-          path: '/',
-          redirect: '/pages ',
-        },
-        {
           path: '/pages',
           name: 'pages',
           redirect: '/pages/dashboard',
-          icon: '',
           component: () => import('@/views/pages/pages.vue'),
           children: pagesChildRouter,
         },
@@ -40,7 +44,7 @@ function fetchRouterOptions(): Promise<RouterOptions> {
         },
         {
           path: '/:pathMatch(.*)*',
-          component: () => import('@/views/not-found/not-found.vue'),
+          redirect: '/login',
         },
       ],
     }

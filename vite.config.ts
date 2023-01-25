@@ -8,6 +8,9 @@ import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    port: 7272,
+  },
   plugins: [
     vue(),
     vueJsx(),
@@ -20,7 +23,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'), //把 src 的别名设置为 @
+      '@': resolve(__dirname, './src'),
     },
   },
 })

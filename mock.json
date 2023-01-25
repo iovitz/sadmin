@@ -2,6 +2,9 @@
   "data": [],
   "user": [{
     "id": 1,
-    "name": "zhangsan"
+    "username": "admin",
+    "password": "admin",
+    "nickname": "骄傲的iovitz",
+    "token": "token..."
   }]
 }

@@ -85,3 +85,7 @@ export class ShortChain {
     delete this.axios.defaults.headers.common[key]
   }
 }
+
+export const commonRequest = new ShortChain({
+  baseURL: import.meta.env.VITE_BASE_URL,
+})

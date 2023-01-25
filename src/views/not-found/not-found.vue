@@ -6,8 +6,10 @@
   </el-result>
 </template>
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const handleBackToIndex = () => {
-  console.log('回到首页')
+  router.replace('/pages')
 }
 </script>
 <style lang="scss"></style>

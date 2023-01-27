@@ -1,7 +1,9 @@
 <template>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <DataCard></DataCard>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import DataCard from './data-card/data-card.vue'
+</script>
 
 <style lang="scss" scoped></style>

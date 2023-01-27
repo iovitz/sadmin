@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "./node_modules/.bin/concurrently \"pnpm run vite\" \"pnpm run mock\"",
+    "dev": "./node_modules/.bin/concurrently \"npm run vite\" \"npm run mock\"",
     "vite": "./node_modules/.bin/vite",
     "mock": "./node_modules/.bin/json-server --watch mock.json --port 7373",
     "build": "run-p type-check build-only",
@@ -19,6 +19,7 @@
     "@vueuse/core": "^9.11.1",
     "axios": "^1.2.4",
     "element-plus": "^2.2.28",
+    "gsap": "^3.11.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",

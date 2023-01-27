@@ -21,6 +21,7 @@ specifiers:
   element-plus: ^2.2.28
   eslint: ^8.22.0
   eslint-plugin-vue: ^9.3.0
+  gsap: ^3.11.4
   husky: ^8.0.3
   jsdom: ^20.0.3
   json-server: ^0.17.1
@@ -46,6 +47,7 @@ dependencies:
   '@vueuse/core': 9.11.1_vue@3.2.45
   axios: 1.2.4
   element-plus: 2.2.28_vue@3.2.45
+  gsap: 3.11.4
   nprogress: 0.2.0
   pinia: 2.0.28_typescript@4.7.4+vue@3.2.45
   vue: 3.2.45
@@ -2909,6 +2911,10 @@ packages:
   /grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
+
+  /gsap/3.11.4:
+    resolution: {integrity: sha512-McHhEguHyExMMnjqKA8G+7TvxmlKQGMbjgwAilnFe1e4id7V/tFveRQ2YMZhTYu0oxHGWvbPltdVYQOu3z1SCA==}
+    dev: false
 
   /hard-rejection/2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}

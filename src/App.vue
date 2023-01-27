@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-
-let a = '12312'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>

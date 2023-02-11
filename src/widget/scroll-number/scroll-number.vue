@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
 import gsap from 'gsap'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const props = defineProps<{
   value: number

@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import App from '@/App.vue'
 import getRouter from '@/router'
 import ElementPlus from 'element-plus'
+import * as echarts from 'echarts'
 import '@/style/tailwind.scss'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
@@ -14,4 +15,5 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(await getRouter())
 app.use(ElementPlus)
+app.config.globalProperties.$echarts = echarts
 app.mount('#__SADMIN__')

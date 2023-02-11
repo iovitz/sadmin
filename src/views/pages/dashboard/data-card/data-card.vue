@@ -8,8 +8,14 @@
             <el-tag size="large">年</el-tag>
           </div>
         </template>
+        <h1 class="text-3xl font-black">
+          <ScrollNumber :value="3213" :fixed="0" />
+        </h1>
         <el-divider />
-        <ScrollNumber :value="3213" :fixed="0" />
+        <div class="flex justify-between">
+          <span>销售额</span>
+          <span>12312</span>
+        </div>
       </el-card>
     </el-col>
   </el-row>
